@@ -1,20 +1,13 @@
-from employees.models import Employee
 from django.shortcuts import render
+from employees.models import Employee
 
 def employee_report(request):
-
     employees = Employee.objects.all()\
-        .select_related(
-            'title',
-            'manager'
-        )
 
     return render(
         request,
         'reports/employees.html',
-        {
-            'employees': employees
-        }
+        {'employees': employees}
     )
 
 from houses.models import House
