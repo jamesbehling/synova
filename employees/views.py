@@ -29,6 +29,7 @@ class EmployeeCreateView(CreateView):
         'email',
         'phone',
         'hire_date',
+        'terminated_date',
         'active',
     ]
 
@@ -53,6 +54,7 @@ class EmployeeUpdateView(UpdateView):
         'email',
         'phone',
         'hire_date',
+        'terminated_date',
         'active',
     ]
 
