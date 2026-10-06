@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Synova Group | Management Portal</title>
-    <!-- Tailwind CSS for clean fallback styling -->
+    <!-- Tailwind CSS for clean layout -->
     <script src="https://tailwindcss.com"></script>
     <style>
-        .bg-synova-dark { background-color: #1e293b; } /* Deep slate gray */
         .bg-synova-teal { background-color: #0d9488; } /* Synova Teal */
         .hover-synova-teal:hover { background-color: #0f766e; }
         .text-synova-dark { color: #1e293b; }
@@ -16,18 +15,18 @@
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
 
-    <!-- Header / Navbar Layout (Slimmer Padding) -->
-    <header class="bg-synova-dark text-white shadow-sm">
+    <!-- Header / Navbar Layout (CHANGED TO HIGH-CONTRAST WHITE BACKGROUND) -->
+    <header class="bg-white text-slate-800 shadow-sm border-b border-gray-200">
         <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-2">
             <div>
-                <h1 class="text-lg font-bold tracking-wide">SYNOVA GROUP</h1>
-                <p class="text-[10px] text-gray-400 tracking-wider uppercase">Simplified Management Services</p>
+                <h1 class="text-lg font-bold tracking-wide text-slate-900">SYNOVA GROUP</h1>
+                <p class="text-[10px] text-gray-500 font-medium tracking-wider uppercase">Simplified Management Services</p>
             </div>
-            <nav class="flex gap-4 text-xs font-medium tracking-wide">
+            <nav class="flex gap-4 text-xs font-semibold tracking-wide">
                 <a href="/" class="text-synova-teal border-b-2 border-synova-teal pb-0.5">Dashboard</a>
-                <a href="{% url 'employee_list' %}" class="hover:text-synova-teal transition">Employees</a>
-                <a href="#" class="hover:text-synova-teal transition">Houses</a>
-                <a href="#" class="hover:text-synova-teal transition">Reports</a>
+                <a href="{% url 'employee_list' %}" class="text-slate-600 hover:text-synova-teal transition">Employees</a>
+                <a href="#" class="text-slate-600 hover:text-synova-teal transition">Houses</a>
+                <a href="#" class="text-slate-600 hover:text-synova-teal transition">Reports</a>
             </nav>
         </div>
     </header>
@@ -35,18 +34,17 @@
     <!-- Content Area -->
     <main class="flex-grow max-w-6xl w-full mx-auto px-4 py-6">
         
-        <!-- Action Row (Bulletproof Inline-Flex Fallback Layout) -->
+        <!-- Action Row -->
         <div style="background: white; border: 1px solid #e5e7eb; padding: 16px; margin-bottom: 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; border-radius: 8px;" class="shadow-sm">
             <div>
                 <h2 style="font-size: 16px; font-weight: bold; color: #1e293b; margin: 0;">Quick Actions</h2>
                 <p style="font-size: 12px; color: #6b7280; margin: 4px 0 0 0;">Add records directly to the management system database.</p>
             </div>
             
-            <!-- REQUIRED ACTION BUTTONS (Locked Down SVG Sizes) -->
+            <!-- REQUIRED ACTION BUTTONS -->
             <div style="display: flex; gap: 8px; margin-top: 12px;">
                 <!-- ADD EMPLOYEE BUTTON -->
                 <a href="{% url 'employee_add' %}" style="background-color: #0d9488; color: white; padding: 8px 16px; font-weight: 600; border-radius: 4px; font-size: 12px; text-decoration: none; text-transform: uppercase; letter-spacing: 0.05em; display: inline-flex; align-items: center; gap: 6px;">
-                    <!-- Fixed sizing: 16px -->
                     <svg xmlns="http://w3.org" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
                     </svg>
@@ -55,7 +53,6 @@
 
                 <!-- ADD HOUSE BUTTON -->
                 <a href="#" style="background-color: #334155; color: white; padding: 8px 16px; font-weight: 600; border-radius: 4px; font-size: 12px; text-decoration: none; text-transform: uppercase; letter-spacing: 0.05em; display: inline-flex; align-items: center; gap: 6px;">
-                    <!-- Fixed sizing: 16px -->
                     <svg xmlns="http://w3.org" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                     </svg>
@@ -64,18 +61,17 @@
             </div>
         </div>
 
-        <!-- Management Sections Grid (Compact Grid) -->
+        <!-- Management Sections Grid -->
         <div class="grid md:grid-cols-3 gap-4">
             <!-- Staff Directory -->
             <div class="bg-white p-4 rounded-lg border border-gray-200 shadow-sm flex flex-col justify-between">
                 <div>
                     <div class="text-synova-teal mb-2">
-                        <!-- Fixed sizing: 24px -->
                         <svg xmlns="http://w3.org" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                         </svg>
                     </div>
-                    <h3 class="text-sm font-bold text-synova-dark mb-1">Staff Directory</h3>
+                    <h3 class="text-sm font-bold text-slate-800 mb-1">Staff Directory</h3>
                     <p class="text-gray-600 text-xs mb-3">Manage data tracking, titles, parameters, and onboarding metrics.</p>
                 </div>
                 <a href="{% url 'employee_list' %}" class="text-synova-teal font-semibold text-xs hover:underline inline-flex items-center gap-1">View Employees &rarr;</a>
@@ -85,12 +81,11 @@
             <div class="bg-white p-4 rounded-lg border border-gray-200 shadow-sm flex flex-col justify-between">
                 <div>
                     <div class="text-synova-teal mb-2">
-                        <!-- Fixed sizing: 24px -->
                         <svg xmlns="http://w3.org" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                         </svg>
                     </div>
-                    <h3 class="text-sm font-bold text-synova-dark mb-1">Facility Records</h3>
+                    <h3 class="text-sm font-bold text-slate-800 mb-1">Facility Records</h3>
                     <p class="text-gray-600 text-xs mb-3">Track facility parameters, site addresses, and layout assets.</p>
                 </div>
                 <a href="#" class="text-synova-teal font-semibold text-xs hover:underline inline-flex items-center gap-1">View Houses &rarr;</a>
@@ -100,12 +95,11 @@
             <div class="bg-white p-4 rounded-lg border border-gray-200 shadow-sm flex flex-col justify-between">
                 <div>
                     <div class="text-synova-teal mb-2">
-                        <!-- Fixed sizing: 24px -->
                         <svg xmlns="http://w3.org" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                         </svg>
                     </div>
-                    <h3 class="text-sm font-bold text-synova-dark mb-1">Administrative Auditing</h3>
+                    <h3 class="text-sm font-bold text-slate-800 mb-1">Administrative Auditing</h3>
                     <p class="text-gray-600 text-xs mb-3">Review operational audit workflows and data framework logs.</p>
                 </div>
                 <a href="#" class="text-synova-teal font-semibold text-xs hover:underline inline-flex items-center gap-1">View Logs &rarr;</a>
@@ -113,8 +107,8 @@
         </div>
     </main>
 
-    <!-- Footer (Shortened) -->
-    <footer class="bg-synova-dark text-gray-400 text-[10px] py-4 border-t border-slate-700 mt-auto">
+    <!-- Footer -->
+    <footer class="bg-white text-gray-500 text-[10px] py-4 border-t border-gray-200 mt-auto">
         <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-2">
             <p class="max-w-xl text-center sm:text-left leading-normal">
                 Synova Group Portal provides non-clinical administrative and employment tracking services. All clinical framework boundaries remain the sole responsibility of the licensed provider entity.
