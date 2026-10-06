@@ -1,0 +1,15 @@
+<h2>Delete Employee</h2>
+
+<form method="post">
+
+{% csrf_token %}
+
+<p>
+Delete {{ object }}?
+</p>
+
+<button type="submit">
+Confirm
+</button>
+
+</form>

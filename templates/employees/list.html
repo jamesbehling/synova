@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employees</title>
+</head>
+<body>
+
+<h1>Employees</h1>
+
+<p>
+    <a href="{% url 'employee_add' %}">
+        Add Employee
+    </a>
+</p>
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Title</th>
+        <th>Actions</th>
+    </tr>
+
+    {% for employee in object_list %}
+    <tr>
+        <td>
+        {{ employee.first_name }} {{ employee.last_name }}
+    </td>
+
+    <td>
+        {{ employee.title }}
+    </td>
+
+    <td>
+        <a href="{% url 'employee_edit' employee.id %}">
+	    Edit
+        </a>
+
+        |
+
+	<a href="{% url 'employee_delete' employee.id %}">
+            Delete
+        </a>
+    </td>
+</tr>
+{% endfor %}
+
+</table>
+
+</body>
+</html>
