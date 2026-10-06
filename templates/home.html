@@ -7,25 +7,24 @@
     <!-- Tailwind CSS for clean layout and exact colors -->
     <script src="https://tailwindcss.com"></script>
     <style>
-        /* Exact color palette matching synovagroup-mn.com */
-        .bg-synova-dark { background-color: #1e293b; } /* Deep slate gray navbar/footer */
-        .bg-synova-teal { background-color: #0d9488; } /* Primary Action Teal */
+        .bg-synova-dark { background-color: #1e293b; } /* Deep slate gray */
+        .bg-synova-teal { background-color: #0d9488; } /* Synova Teal */
         .hover-synova-teal:hover { background-color: #0f766e; }
         .text-synova-dark { color: #1e293b; }
         .text-synova-teal { color: #0d9488; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-auto min-h-screen">
+<body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
 
-    <!-- Header / Navbar Layout -->
-    <header class="bg-synova-dark text-white shadow-md">
-        <div class="max-w-7xl mx-auto px-4 py-5 flex flex-col sm:flex-row justify-between items-center gap-4">
+    <!-- Header / Navbar Layout (Slimmer Padding) -->
+    <header class="bg-synova-dark text-white shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-2">
             <div>
-                <h1 class="text-2xl font-bold tracking-wide">SYNOVA GROUP</h1>
-                <p class="text-xs text-gray-400 tracking-wider uppercase">Simplified Management Services</p>
+                <h1 class="text-lg font-bold tracking-wide">SYNOVA GROUP</h1>
+                <p class="text-[10px] text-gray-400 tracking-wider uppercase">Simplified Management Services</p>
             </div>
-            <nav class="flex gap-6 text-sm font-medium tracking-wide">
-                <a href="/" class="text-synova-teal border-b-2 border-synova-teal pb-1">Dashboard</a>
+            <nav class="flex gap-4 text-xs font-medium tracking-wide">
+                <a href="/" class="text-synova-teal border-b-2 border-synova-teal pb-0.5">Dashboard</a>
                 <a href="{% url 'employee_list' %}" class="hover:text-synova-teal transition">Employees</a>
                 <a href="#" class="hover:text-synova-teal transition">Houses</a>
                 <a href="#" class="hover:text-synova-teal transition">Reports</a>
@@ -33,86 +32,76 @@
         </div>
     </header>
 
-    <!-- Hero / Action Section -->
-    <main class="flex-grow">
-        <div class="relative bg-gradient-to-r from-slate-800 to-slate-900 text-white py-20 px-4 text-center">
-            <!-- Simulated background overlay matching the corporate hero graphics structure -->
-            <div class="absolute inset-0 bg-black/40 mix-blend-multiply"></div>
+    <!-- Content Area -->
+    <main class="flex-grow max-w-6xl w-full mx-auto px-4 py-6">
+        
+        <!-- Action Row (Clean, Flat, Non-Intrusive) -->
+        <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6 flex flex-col md:flex-row items-center justify-between gap-4 shadow-sm">
+            <div>
+                <h2 class="text-base font-bold text-synova-dark">Quick Actions</h2>
+                <p class="text-xs text-gray-500">Add records directly to the management system database.</p>
+            </div>
             
-            <div class="relative max-w-4xl mx-auto z-10">
-                <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
-                    Streamlined Operations & Back-Office Support
-                </h2>
-                <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10">
-                    At Synova Group, we believe effective management should be simple. Control and track your core assets effortlessly.
-                </p>
-                
-                <!-- REQUIRED ACTION BUTTONS -->
-                <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
-                    <a href="{% url 'employee_add' %}" class="w-full sm:w-auto px-8 py-4 bg-synova-teal hover-synova-teal text-white font-bold rounded shadow-lg transition duration-200 uppercase tracking-wider text-sm flex items-center justify-center gap-2">
-                        <svg xmlns="http://w3.org" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" /></svg>
-                        Add Employee
-                    </a>
-                    <a href="#" class="w-full sm:w-auto px-8 py-4 bg-transparent border-2 border-white hover:bg-white hover:text-slate-900 text-white font-bold rounded shadow-lg transition duration-200 uppercase tracking-wider text-sm flex items-center justify-center gap-2">
-                        <svg xmlns="http://w3.org" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
-                        Add House
-                    </a>
-                </div>
+            <!-- REQUIRED ACTION BUTTONS (Sized down, clean layout) -->
+            <div class="flex flex-wrap items-center gap-2 w-full md:w-auto">
+                <a href="{% url 'employee_add' %}" class="flex-1 sm:flex-none px-4 py-2 bg-synova-teal hover-synova-teal text-white font-semibold rounded text-xs tracking-wider uppercase flex items-center justify-center gap-1.5 transition">
+                    <svg xmlns="http://w3.org" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" /></svg>
+                    Add Employee
+                </a>
+                <a href="#" class="flex-1 sm:flex-none px-4 py-2 bg-slate-700 hover:bg-slate-800 text-white font-semibold rounded text-xs tracking-wider uppercase flex items-center justify-center gap-1.5 transition">
+                    <svg xmlns="http://w3.org" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+                    Add House
+                </a>
             </div>
         </div>
 
-        <!-- Portal Overview Cards -->
-        <section class="max-w-7xl mx-auto px-4 py-16">
-            <div class="text-center mb-12">
-                <h3 class="text-3xl font-bold text-synova-dark tracking-tight">Simplified Group Home Management</h3>
-                <div class="h-1 w-20 bg-synova-teal mx-auto mt-3"></div>
+        <!-- Management Sections Grid (Compact Grid) -->
+        <div class="grid md:grid-cols-3 gap-4">
+            <!-- Staff Directory -->
+            <div class="bg-white p-4 rounded-lg border border-gray-200 shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="text-synova-teal mb-2">
+                        <svg xmlns="http://w3.org" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                    </div>
+                    <h3 class="text-sm font-bold text-synova-dark mb-1">Staff Directory</h3>
+                    <p class="text-gray-600 text-xs mb-3">Manage data tracking, titles, parameters, and onboarding metrics.</p>
+                </div>
+                <a href="{% url 'employee_list' %}" class="text-synova-teal font-semibold text-xs hover:underline inline-flex items-center gap-1">View Employees &rarr;</a>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Card 1: Employees -->
-                <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition">
-                    <div class="text-synova-teal mb-4">
-                        <svg xmlns="http://w3.org" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+            <!-- House Matrix -->
+            <div class="bg-white p-4 rounded-lg border border-gray-200 shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="text-synova-teal mb-2">
+                        <svg xmlns="http://w3.org" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
                     </div>
-                    <h4 class="text-xl font-bold text-synova-dark mb-2">Staff & HR</h4>
-                    <p class="text-gray-600 text-sm mb-4">Manage employee titles, compliance checks, data tracking, and onboarding roles metrics seamlessly.</p>
-                    <a href="{% url 'employee_list' %}" class="text-synova-teal font-semibold text-sm hover:underline">View Employees &rarr;</a>
+                    <h3 class="text-sm font-bold text-synova-dark mb-1">Facility Records</h3>
+                    <p class="text-gray-600 text-xs mb-3">Track facility parameters, site addresses, and layout assets.</p>
                 </div>
-
-                <!-- Card 2: Houses -->
-                <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition">
-                    <div class="text-synova-teal mb-4">
-                        <svg xmlns="http://w3.org" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
-                    </div>
-                    <h4 class="text-xl font-bold text-synova-dark mb-2">House Directory</h4>
-                    <p class="text-gray-600 text-sm mb-4">Track location assets, maintenance tickets, facility parameters, and layout records across sites.</p>
-                    <a href="#" class="text-synova-teal font-semibold text-sm hover:underline">View Houses &rarr;</a>
-                </div>
-
-                <!-- Card 3: Compliance & Reports -->
-                <div class="bg-white p-8 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition">
-                    <div class="text-synova-teal mb-4">
-                        <svg xmlns="http://w3.org" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
-                    </div>
-                    <h4 class="text-xl font-bold text-synova-dark mb-2">Compliance Support</h4>
-                    <p class="text-gray-600 text-sm mb-4">Review clinical framework boundaries, non-clinical logistics data logs, and program audit workflows safely.</p>
-                    <a href="#" class="text-synova-teal font-semibold text-sm hover:underline">View Audit Logs &rarr;</a>
-                </div>
+                <a href="#" class="text-synova-teal font-semibold text-xs hover:underline inline-flex items-center gap-1">View Houses &rarr;</a>
             </div>
-        </section>
+
+            <!-- Compliance Systems -->
+            <div class="bg-white p-4 rounded-lg border border-gray-200 shadow-sm flex flex-col justify-between">
+                <div>
+                    <div class="text-synova-teal mb-2">
+                        <svg xmlns="http://w3.org" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                    </div>
+                    <h3 class="text-sm font-bold text-synova-dark mb-1">Administrative Auditing</h3>
+                    <p class="text-gray-600 text-xs mb-3">Review operational audit workflows and data framework logs.</p>
+                </div>
+                <a href="#" class="text-synova-teal font-semibold text-xs hover:underline inline-flex items-center gap-1">View Logs &rarr;</a>
+            </div>
+        </div>
     </main>
 
-    <!-- Footer Layout matching original styling rules -->
-    <footer class="bg-synova-dark text-gray-400 text-xs py-8 border-t border-slate-700">
-        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="text-center md:text-left max-w-md">
-                <p class="mb-2 text-gray-300 font-semibold text-sm">Synova Group Portal</p>
-                <p>Synova Group provides non-clinical administrative and employment services, including payroll, human resources, and compliance support.</p>
-            </div>
-            <div class="text-center md:text-right">
-                <p>&copy; 2026 Synova Group LLC.</p>
-                <p class="text-gray-500 mt-1">Portal System Environment v1.0</p>
-            </div>
+    <!-- Footer (Shortened) -->
+    <footer class="bg-synova-dark text-gray-400 text-[10px] py-4 border-t border-slate-700 mt-auto">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-2">
+            <p class="max-w-xl text-center sm:text-left leading-normal">
+                Synova Group Portal provides non-clinical administrative and employment tracking services. All clinical framework boundaries remain the sole responsibility of the licensed provider entity.
+            </p>
+            <p class="whitespace-nowrap">&copy; 2026 Synova Group LLC.</p>
         </div>
     </footer>
 
