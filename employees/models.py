@@ -63,6 +63,11 @@ class Employee(models.Model):
         blank=True
     )
 
+    terminated_date = models.DateField(
+        null=True,
+        blank=True
+    )
+
     active = models.BooleanField(
         default=True
     )
