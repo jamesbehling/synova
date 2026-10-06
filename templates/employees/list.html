@@ -1,50 +1,132 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Employees</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employees - Synova Group</title>
+    <script src="https://tailwindcss.com"></script>
+    <style>
+        .bg-synova-teal { background-color: #0d9488; }
+        .hover-synova-teal:hover { background-color: #0f766e; }
+        .text-synova-teal { color: #0d9488; }
+        .border-synova-teal { border-color: #0d9488; }
+        .status-active { color: #16a34a; font-weight: 600; }
+        .status-inactive { color: #dc2626; font-weight: 600; }
+    </style>
 </head>
-<body>
+<body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
 
-<h1>Employees</h1>
+    <!-- Header / Navbar -->
+    <header class="bg-white text-slate-800 shadow-sm border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div>
+                <h1 class="text-lg font-bold tracking-wide text-slate-900">SYNOVA GROUP</h1>
+                <p class="text-[10px] text-gray-500 font-medium tracking-wider uppercase">Simplified Management Services</p>
+            </div>
+            <nav class="flex gap-4 text-xs font-semibold tracking-wide">
+                <a href="/" class="text-slate-600 hover:text-synova-teal transition">Dashboard</a>
+                <a href="{% url 'employee_list' %}" class="text-synova-teal border-b-2 border-synova-teal pb-0.5">Employees</a>
+                <a href="#" class="text-slate-600 hover:text-synova-teal transition">Houses</a>
+                <a href="#" class="text-slate-600 hover:text-synova-teal transition">Reports</a>
+            </nav>
+        </div>
+    </header>
 
-<p>
-    <a href="{% url 'employee_add' %}">
-        Add Employee
-    </a>
-</p>
+    <!-- Main Content -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-6">
 
-<table border="1">
-    <tr>
-        <th>Name</th>
-        <th>Title</th>
-        <th>Actions</th>
-    </tr>
+        <!-- Page Header with Action -->
+        <div class="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <div>
+                <h2 class="text-2xl font-bold text-slate-900 mb-1">Employees</h2>
+                <p class="text-gray-600 text-sm">Manage your organization's staff directory</p>
+            </div>
+            <a href="{% url 'employee_add' %}" class="bg-synova-teal hover-synova-teal text-white px-4 py-2 rounded-lg font-semibold text-sm transition inline-flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                </svg>
+                Add Employee
+            </a>
+        </div>
 
-    {% for employee in object_list %}
-    <tr>
-        <td>
-        {{ employee.first_name }} {{ employee.last_name }}
-    </td>
+        <!-- Table Container -->
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+            {% if object_list %}
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead class="bg-gray-100 border-b border-gray-200">
+                        <tr>
+                            <th class="px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Name</th>
+                            <th class="px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Title</th>
+                            <th class="px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Email</th>
+                            <th class="px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Hire Date</th>
+                            <th class="px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Status</th>
+                            <th class="px-4 py-3 text-center text-xs font-semibold text-gray-700 uppercase tracking-wider">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        {% for employee in object_list %}
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-4 py-3 text-sm font-medium text-slate-900">
+                                {{ employee.prefix }}{% if employee.prefix %} {% endif %}{{ employee.first_name }} {% if employee.middle_name %}{{ employee.middle_name }} {% endif %}{{ employee.last_name }}{% if employee.suffix %} {{ employee.suffix }}{% endif %}
+                            </td>
+                            <td class="px-4 py-3 text-sm text-gray-600">
+                                {{ employee.title }}
+                            </td>
+                            <td class="px-4 py-3 text-sm text-gray-600">
+                                {% if employee.email %}
+                                    <a href="mailto:{{ employee.email }}" class="text-synova-teal hover:underline">{{ employee.email }}</a>
+                                {% else %}
+                                    <span class="text-gray-400">—</span>
+                                {% endif %}
+                            </td>
+                            <td class="px-4 py-3 text-sm text-gray-600">
+                                {% if employee.hire_date %}
+                                    {{ employee.hire_date|date:"M d, Y" }}
+                                {% else %}
+                                    <span class="text-gray-400">—</span>
+                                {% endif %}
+                            </td>
+                            <td class="px-4 py-3 text-sm">
+                                {% if employee.active %}
+                                    <span class="status-active">Active</span>
+                                {% else %}
+                                    <span class="status-inactive">Inactive</span>
+                                {% endif %}
+                            </td>
+                            <td class="px-4 py-3 text-sm text-center">
+                                <div class="flex gap-2 justify-center">
+                                    <a href="{% url 'employee_edit' employee.id %}" class="text-synova-teal hover:text-slate-900 font-semibold text-xs transition">Edit</a>
+                                    <span class="text-gray-300">|</span>
+                                    <a href="{% url 'employee_delete' employee.id %}" class="text-red-600 hover:text-red-800 font-semibold text-xs transition">Delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div class="px-6 py-12 text-center">
+                <p class="text-gray-500 mb-4">No employees found.</p>
+                <a href="{% url 'employee_add' %}" class="bg-synova-teal hover-synova-teal text-white px-4 py-2 rounded-lg font-semibold text-sm transition inline-block">
+                    Add Your First Employee
+                </a>
+            </div>
+            {% endif %}
+        </div>
 
-    <td>
-        {{ employee.title }}
-    </td>
+    </main>
 
-    <td>
-        <a href="{% url 'employee_edit' employee.id %}">
-	    Edit
-        </a>
-
-        |
-
-	<a href="{% url 'employee_delete' employee.id %}">
-            Delete
-        </a>
-    </td>
-</tr>
-{% endfor %}
-
-</table>
+    <!-- Footer -->
+    <footer class="bg-white text-gray-500 text-[10px] py-4 border-t border-gray-200 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-2">
+            <p class="max-w-xl text-center sm:text-left leading-normal">
+                Synova Group Portal provides non-clinical administrative and employment tracking services. All clinical framework boundaries remain the sole responsibility of the licensed provider.
+            </p>
+            <p class="whitespace-nowrap">&copy; 2026 Synova Group LLC.</p>
+        </div>
+    </footer>
 
 </body>
 </html>
