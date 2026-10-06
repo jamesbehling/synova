@@ -34,6 +34,7 @@ class Migration(migrations.Migration):
                 ('active', models.BooleanField(default=True)),
                 ('manager', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='subordinates', to='employees.employee')),
                 ('title', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='employees.title')),
+                ('terminated_date', models.DateField(blank=True, null=True)),
             ],
         ),
     ]
