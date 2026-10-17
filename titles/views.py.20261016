@@ -1,0 +1,35 @@
+from django.views.generic import (
+  ListView,
+  CreateView,
+  UpdateView,
+  DeleteView,
+)
+
+from django.urls import reverse_lazy
+
+from .models import Title
+
+class TitleListView(ListView):
+    model = Title
+    template_name = 'titles/list.html'
+
+class TitleCreateView(CreateView):
+    model = Title
+    fields = [
+        'name'
+    ]
+    template_name = 'titles/form.html'
+    success_url = reverse_lazy('title_list')
+
+class TitleUpdateView(UpdateView):
+    model = Title
+    fields = [
+        'name'
+    ]
+    template_name = 'titles/form.html'
+    success_url = reverse_lazy('title_list')
+
+class TitleDeleteView(DeleteView):
+    model = Title
+    template_name = 'titles/delete.html'
+    success_url = reverse_lazy('title_list')

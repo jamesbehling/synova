@@ -1,3 +1,53 @@
-from django.shortcuts import render
+from django.contrib import messages
+from django.db.models import ProtectedError
+from django.shortcuts import redirect
 
-# Create your views here.
+from django.views.generic import (
+  ListView,
+  CreateView,
+  UpdateView,
+  DeleteView,
+)
+
+from django.urls import reverse_lazy
+from .models import House
+
+class HouseListView(ListView):
+    model = House
+    template_name = 'houses/list.html'
+
+class HouseCreateView(CreateView):
+    model = House
+    fields = [
+        'name'
+    ]
+    template_name = 'houses/form.html'
+    success_url = reverse_lazy('house_list')
+
+class HouseUpdateView(UpdateView):
+    model = House
+    fields = [
+        'name'
+    ]
+    template_name = 'houses/form.html'
+    success_url = reverse_lazy('house_list')
+
+class HouseDeleteView(DeleteView):
+    model = House
+    template_name = 'houses/delete.html'
+    success_url = reverse_lazy('house_list')
+
+class HouseDeleteView(DeleteView):
+    model = House
+    template_name = 'house/delete.html'
+    success_url = reverse_lazy('house_list') # Or use reverse_lazy('house_list')
+
+    def form_valid(self, form):
+        try:
+            return super().form_valid(form)
+        except ProtectedError:
+            messages.error(
+                self.request,
+                "Cannot delete this house because one or more employees (like James Behling) are still assigned to it."
+            )
+            return redirect(self.success_url)

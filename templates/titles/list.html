@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titles - Synova Group</title>
+    <script src="https://tailwindcss.com"></script>
+    <style>
+        .bg-synova-teal { background-color: #0d9488; }
+        .hover-synova-teal:hover { background-color: #0f766e; }
+        .text-synova-teal { color: #0d9488; }
+        .border-synova-teal { border-color: #0d9488; }
+        .status-active { color: #16a34a; font-weight: 600; }
+        .status-inactive { color: #dc2626; font-weight: 600; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
+
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li class="{{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+
+    <!-- Header / Navbar -->
+    <header class="bg-white text-slate-800 shadow-sm border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div>
+                <h1 class="text-lg font-bold tracking-wide text-slate-900">SYNOVA GROUP</h1>
+                <p class="text-[10px] text-gray-500 font-medium tracking-wider uppercase">Simplified Management Services</p>
+            </div>
+            <nav class="flex gap-4 text-xs font-semibold tracking-wide">
+                <a href="/" class="text-slate-600 hover:text-synova-teal transition">Dashboard</a>
+                <a href="{% url 'employee_list' %}" class="text-synova-teal border-b-2 border-synova-teal pb-0.5">Employees</a>
+                <a href="#" class="text-slate-600 hover:text-synova-teal transition">Houses</a>
+                <a href="{% url 'title_list' %}" class="text-synova-teal border-b-2 border-synova-teal pb-0.5">Titles</a>
+                <a href="#" class="text-slate-600 hover:text-synova-teal transition">Reports</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-6">
+
+        <!-- Page Header with Action -->
+        <div class="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <div>
+                <h2 class="text-2xl font-bold text-slate-900 mb-1">Titles</h2>
+                <p class="text-gray-600 text-sm">Manage your organization's staff directory</p>
+            </div>
+            <a href="{% url 'title_add' %}" class="bg-synova-teal hover-synova-teal text-white px-4 py-2 rounded-lg font-semibold text-sm transition inline-flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                </svg>
+                Add Title
+            </a>
+        </div>
+
+        <!-- Table Container -->
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+            {% if object_list %}
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead class="bg-gray-100 border-b border-gray-200">
+                        <tr>
+                            <th class="px-4 py-3 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">Name</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        {% for title in object_list %}
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-4 py-3 text-sm font-medium text-slate-900">
+				{{ title.name }} 
+                            </td>
+                            <td class="px-4 py-3 text-sm text-center">
+                                <div class="flex gap-2 justify-center">
+                                    <a href="{% url 'title_edit' title.id %}" class="text-synova-teal hover:text-slate-900 font-semibold text-xs transition">Edit</a>
+                                    <span class="text-gray-300">|</span>
+                                    <a href="{% url 'title_delete' title.id %}" class="text-red-600 hover:text-red-800 font-semibold text-xs transition">Delete</a>
+                                </div>
+                            </td>
+			</tr>
+			{% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div class="px-6 py-12 text-center">
+                <p class="text-gray-500 mb-4">No titles found.</p>
+                <a href="{% url 'title_add' %}" class="bg-synova-teal hover-synova-teal text-white px-4 py-2 rounded-lg font-semibold text-sm transition inline-block">
+                    Add Your First Title
+                </a>
+            </div>
+            {% endif %}
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white text-gray-500 text-[10px] py-4 border-t border-gray-200 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-2">
+            <p class="max-w-xl text-center sm:text-left leading-normal">
+                Synova Group Portal provides non-clinical administrative and employment tracking services. All clinical framework boundaries remain the sole responsibility of the licensed provider.
+            </p>
+            <p class="whitespace-nowrap">&copy; 2026 Synova Group LLC.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

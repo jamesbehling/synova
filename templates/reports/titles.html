@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Titles</title>
+</head>
+<body>
+
+<h1>Titles Report</h1>
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+    </tr>
+
+    {% for title in titles %}
+    <tr>
+        <td>{{ title.name }}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+</body>
+</html>

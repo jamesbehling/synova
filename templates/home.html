@@ -1,35 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Synova Group | Management Portal</title>
-    <!-- Tailwind CSS for clean layout -->
-    <script src="https://tailwindcss.com"></script>
-    <style>
-        .bg-synova-teal { background-color: #0d9488; } /* Synova Teal */
-        .hover-synova-teal:hover { background-color: #0f766e; }
-        .text-synova-dark { color: #1e293b; }
-        .text-synova-teal { color: #0d9488; }
-    </style>
-</head>
-<body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
+{% extends 'base.html' %}
 
-    <!-- Header / Navbar Layout (CHANGED TO HIGH-CONTRAST WHITE BACKGROUND) -->
-    <header class="bg-white text-slate-800 shadow-sm border-b border-gray-200">
-        <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-2">
-            <div>
-                <h1 class="text-lg font-bold tracking-wide text-slate-900">SYNOVA GROUP</h1>
-                <p class="text-[10px] text-gray-500 font-medium tracking-wider uppercase">Simplified Management Services</p>
-            </div>
-            <nav class="flex gap-4 text-xs font-semibold tracking-wide">
-                <a href="/" class="text-synova-teal border-b-2 border-synova-teal pb-0.5">Dashboard</a>
-                <a href="{% url 'employee_list' %}" class="text-slate-600 hover:text-synova-teal transition">Employees</a>
-                <a href="#" class="text-slate-600 hover:text-synova-teal transition">Houses</a>
-                <a href="#" class="text-slate-600 hover:text-synova-teal transition">Reports</a>
-            </nav>
-        </div>
-    </header>
+{% block content %}
 
     <!-- Content Area -->
     <main class="flex-grow max-w-6xl w-full mx-auto px-4 py-6">
@@ -60,6 +31,19 @@
                 </a>
             </div>
         </div>
+
+                <!-- ADD TITLE BUTTON -->
+                <a href="#" style="background-color: #334155; color: white; padding: 8px 16px; font-weight: 600; border-radius: 4px; font-size: 12px; text-decoration: none; text-transform: uppercase; letter-spacing: 0.05em; display: inline-flex; align-items: center; gap: 6px;">
+                    <svg xmlns="http://w3.org" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg>
+                    Add Title
+                </a>
+            </div>
+        </div>
+
+
+
 
         <!-- Management Sections Grid -->
         <div class="grid md:grid-cols-3 gap-4">
@@ -117,5 +101,4 @@
         </div>
     </footer>
 
-</body>
-</html>
+{% endblock %}
