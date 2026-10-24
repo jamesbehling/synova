@@ -14,32 +14,28 @@ from .models import EmployeeAssignment
 
 class EmployeeAssignmentListView(ListView):
     model = EmployeeAssignment
-    template_name = 'employeeassignments/list.html'
+    template_name = 'employeeassignments/employeeassignment_list.html'
 
 class EmployeeAssignmentCreateView(CreateView):
     model = EmployeeAssignment
-    fields = [
-        'name'
-    ]
-    template_name = 'employeeassignments/form.html'
+    fields = '__all__'
+    template_name = 'employeeassignments/employeeassignment_form.html'
     success_url = reverse_lazy('employeeassignment_list')
 
 class EmployeeAssignmentUpdateView(UpdateView):
     model = EmployeeAssignment
-    fields = [
-        'name'
-    ]
-    template_name = 'employeeassignments/form.html'
+    fields = '__all__'
+    template_name = 'employeeassignments/employeeassignment_form.html'
     success_url = reverse_lazy('employeeassignment_list')
 
 class EmployeeAssignmentDeleteView(DeleteView):
     model = EmployeeAssignment
-    template_name = 'employeeassignments/delete.html'
+    template_name = 'employeeassignments/employeeassignment_delete.html'
     success_url = reverse_lazy('employeeassignment_list')
 
 class EmployeeAssignmentDeleteView(DeleteView):
     model = EmployeeAssignment
-    template_name = 'employeeassignment/delete.html'
+    template_name = 'employeeassignments/employeeassignment_delete.html'
     success_url = reverse_lazy('employeeassignment_list') # Or use reverse_lazy('employeeassignment_list')
 
     def form_valid(self, form):

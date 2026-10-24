@@ -4,7 +4,7 @@
 <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2>Employee Assignments</h2>
-        <a href="{% url 'employeeassignment_create' %}" class="btn btn-primary">Add Assignment</a>
+        <a href="{% url 'employeeassignment_add' %}" class="btn btn-primary">Add Assignment</a>
     </div>
 
     <div class="table-responsive">
@@ -34,8 +34,8 @@
                         {% endif %}
                     </td>
                     <td>
-                        <a href="{% url 'assignment_update' assignment.pk %}" class="btn btn-sm btn-outline-primary">Edit</a>
-                        <a href="{% url 'assignment_delete' assignment.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
+                        <a href="{% url 'employeeassignment_edit' assignment.pk %}" class="btn btn-sm btn-outline-primary">Edit</a>
+                        <a href="{% url 'employeeassignment_delete' assignment.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
                     </td>
                 </tr>
                 {% empty %}

@@ -14,32 +14,28 @@ from .models import House
 
 class HouseListView(ListView):
     model = House
-    template_name = 'houses/list.html'
+    template_name = 'houses/house_list.html'
 
 class HouseCreateView(CreateView):
     model = House
-    fields = [
-        'name'
-    ]
-    template_name = 'houses/form.html'
+    fields = '__all__'
+    template_name = 'houses/house_form.html'
     success_url = reverse_lazy('house_list')
 
 class HouseUpdateView(UpdateView):
     model = House
-    fields = [
-        'name'
-    ]
-    template_name = 'houses/form.html'
+    fields = '__all__'
+    template_name = 'houses/house_form.html'
     success_url = reverse_lazy('house_list')
 
 class HouseDeleteView(DeleteView):
     model = House
-    template_name = 'houses/delete.html'
+    template_name = 'houses/house_delete.html'
     success_url = reverse_lazy('house_list')
 
 class HouseDeleteView(DeleteView):
     model = House
-    template_name = 'house/delete.html'
+    template_name = 'houses/house_delete.html'
     success_url = reverse_lazy('house_list') # Or use reverse_lazy('house_list')
 
     def form_valid(self, form):

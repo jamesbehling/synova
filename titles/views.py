@@ -14,14 +14,14 @@ from .models import Title
 
 class TitleListView(ListView):
     model = Title
-    template_name = 'titles/list.html'
+    template_name = 'titles/title_list.html'
 
 class TitleCreateView(CreateView):
     model = Title
     fields = [
         'name'
     ]
-    template_name = 'titles/form.html'
+    template_name = 'titles/title_form.html'
     success_url = reverse_lazy('title_list')
 
 class TitleUpdateView(UpdateView):
@@ -29,17 +29,17 @@ class TitleUpdateView(UpdateView):
     fields = [
         'name'
     ]
-    template_name = 'titles/form.html'
+    template_name = 'titles/title_form.html'
     success_url = reverse_lazy('title_list')
 
 class TitleDeleteView(DeleteView):
     model = Title
-    template_name = 'titles/delete.html'
+    template_name = 'titles/title_delete.html'
     success_url = reverse_lazy('title_list')
 
 class TitleDeleteView(DeleteView):
     model = Title
-    template_name = 'titles/delete.html'
+    template_name = 'titles/title_delete.html'
     success_url = reverse_lazy('title_list') # Or use reverse_lazy('title_list')
 
     def form_valid(self, form):

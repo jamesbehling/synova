@@ -1,104 +1,127 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="container py-4">
+    
+    <!-- Welcome Header -->
+    <div class="p-4 mb-5 bg-light rounded-3 shadow-sm border">
+        <h1 class="display-6 fw-bold text-dark">Synova Management Portal</h1>
+        <p class="text-muted mb-0">Welcome back. Manage your employees, houses, titles, assignments, and system reports from one dashboard.</p>
+    </div>
 
-    <!-- Content Area -->
-    <main class="flex-grow max-w-6xl w-full mx-auto px-4 py-6">
-        
-        <!-- Action Row -->
-        <div style="background: white; border: 1px solid #e5e7eb; padding: 16px; margin-bottom: 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; border-radius: 8px;" class="shadow-sm">
-            <div>
-                <h2 style="font-size: 16px; font-weight: bold; color: #1e293b; margin: 0;">Quick Actions</h2>
-                <p style="font-size: 12px; color: #6b7280; margin: 4px 0 0 0;">Add records directly to the management system database.</p>
-            </div>
-            
-            <!-- REQUIRED ACTION BUTTONS -->
-            <div style="display: flex; gap: 8px; margin-top: 12px;">
-                <!-- ADD EMPLOYEE BUTTON -->
-                <a href="{% url 'employee_add' %}" style="background-color: #0d9488; color: white; padding: 8px 16px; font-weight: 600; border-radius: 4px; font-size: 12px; text-decoration: none; text-transform: uppercase; letter-spacing: 0.05em; display: inline-flex; align-items: center; gap: 6px;">
-                    <svg xmlns="http://w3.org" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
-                    </svg>
-                    Add Employee
-                </a>
-
-                <!-- ADD HOUSE BUTTON -->
-                <a href="#" style="background-color: #334155; color: white; padding: 8px 16px; font-weight: 600; border-radius: 4px; font-size: 12px; text-decoration: none; text-transform: uppercase; letter-spacing: 0.05em; display: inline-flex; align-items: center; gap: 6px;">
-                    <svg xmlns="http://w3.org" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                    </svg>
-                    Add House
+    <!-- SECTION 1: QUICK ACTIONS (Add items) -->
+    <div class="mb-5">
+        <h3 class="h5 fw-bold text-secondary mb-3">Quick Actions (Add Records)</h3>
+        <div class="row g-3">
+            <!-- Add Employee -->
+            <div class="col-md-3">
+                <a href="{% url 'employee_add' %}" class="btn btn-outline-primary w-100 py-3 text-start shadow-sm">
+                    <div class="fw-bold">+ Add Employee</div>
+                    <small class="text-muted">Register a new staff member</small>
                 </a>
             </div>
-        </div>
-
-                <!-- ADD TITLE BUTTON -->
-                <a href="#" style="background-color: #334155; color: white; padding: 8px 16px; font-weight: 600; border-radius: 4px; font-size: 12px; text-decoration: none; text-transform: uppercase; letter-spacing: 0.05em; display: inline-flex; align-items: center; gap: 6px;">
-                    <svg xmlns="http://w3.org" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                    </svg>
-                    Add Title
+            <!-- Add House -->
+            <div class="col-md-3">
+                <a href="{% url 'house_add' %}" class="btn btn-outline-secondary w-100 py-3 text-start shadow-sm">
+                    <div class="fw-bold">+ Add House</div>
+                    <small class="text-muted">Register a new facility</small>
+                </a>
+            </div>
+            <!-- Add Title -->
+            <div class="col-md-3">
+                <a href="{% url 'title_add' %}" class="btn btn-outline-success w-100 py-3 text-start shadow-sm">
+                    <div class="fw-bold">+ Add Title</div>
+                    <small class="text-muted">Create a job title</small>
+                </a>
+            </div>
+            <!-- Add Assignment -->
+            <div class="col-md-3">
+                <a href="{% url 'employeeassignment_add' %}" class="btn btn-outline-dark w-100 py-3 text-start shadow-sm">
+                    <div class="fw-bold">+ Add Assignment</div>
+                    <small class="text-muted">Link staff to a house</small>
                 </a>
             </div>
         </div>
+    </div>
 
-
-
-
-        <!-- Management Sections Grid -->
-        <div class="grid md:grid-cols-3 gap-4">
-            <!-- Staff Directory -->
-            <div class="bg-white p-4 rounded-lg border border-gray-200 shadow-sm flex flex-col justify-between">
-                <div>
-                    <div class="text-synova-teal mb-2">
-                        <svg xmlns="http://w3.org" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                        </svg>
+    <!-- SECTION 2: DIRECTORY LISTS (View items) -->
+    <div class="mb-5">
+        <h3 class="h5 fw-bold text-secondary mb-3">Directory Lists</h3>
+        <div class="row g-4">
+            <!-- Employees List Card -->
+            <div class="col-md-3">
+                <div class="card h-100 shadow-sm border-0 bg-white">
+                    <div class="card-body d-flex flex-col justify-between">
+                        <div>
+                            <h5 class="card-title fw-bold text-dark">Employees</h5>
+                            <p class="card-text text-muted small">View, edit, or remove staff member records and parameters.</p>
+                        </div>
+                        <a href="{% url 'employee_list' %}" class="btn btn-sm btn-primary mt-3">View Employees &rarr;</a>
                     </div>
-                    <h3 class="text-sm font-bold text-slate-800 mb-1">Staff Directory</h3>
-                    <p class="text-gray-600 text-xs mb-3">Manage data tracking, titles, parameters, and onboarding metrics.</p>
                 </div>
-                <a href="{% url 'employee_list' %}" class="text-synova-teal font-semibold text-xs hover:underline inline-flex items-center gap-1">View Employees &rarr;</a>
             </div>
-
-            <!-- House Matrix -->
-            <div class="bg-white p-4 rounded-lg border border-gray-200 shadow-sm flex flex-col justify-between">
-                <div>
-                    <div class="text-synova-teal mb-2">
-                        <svg xmlns="http://w3.org" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                        </svg>
+            <!-- Houses List Card -->
+            <div class="col-md-3">
+                <div class="card h-100 shadow-sm border-0 bg-white">
+                    <div class="card-body d-flex flex-col justify-between">
+                        <div>
+                            <h5 class="card-title fw-bold text-dark">Houses</h5>
+                            <p class="card-text text-muted small">Manage facility details, addresses, and capacities.</p>
+                        </div>
+                        <a href="{% url 'house_list' %}" class="btn btn-sm btn-secondary mt-3">View Houses &rarr;</a>
                     </div>
-                    <h3 class="text-sm font-bold text-slate-800 mb-1">Facility Records</h3>
-                    <p class="text-gray-600 text-xs mb-3">Track facility parameters, site addresses, and layout assets.</p>
                 </div>
-                <a href="#" class="text-synova-teal font-semibold text-xs hover:underline inline-flex items-center gap-1">View Houses &rarr;</a>
             </div>
-
-            <!-- Compliance Systems -->
-            <div class="bg-white p-4 rounded-lg border border-gray-200 shadow-sm flex flex-col justify-between">
-                <div>
-                    <div class="text-synova-teal mb-2">
-                        <svg xmlns="http://w3.org" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                        </svg>
+            <!-- Titles List Card -->
+            <div class="col-md-3">
+                <div class="card h-100 shadow-sm border-0 bg-white">
+                    <div class="card-body d-flex flex-col justify-between">
+                        <div>
+                            <h5 class="card-title fw-bold text-dark">Titles</h5>
+                            <p class="card-text text-muted small">Configure organizational positions and codes.</p>
+                        </div>
+                        <a href="{% url 'title_list' %}" class="btn btn-sm btn-success mt-3">View Titles &rarr;</a>
                     </div>
-                    <h3 class="text-sm font-bold text-slate-800 mb-1">Administrative Auditing</h3>
-                    <p class="text-gray-600 text-xs mb-3">Review operational audit workflows and data framework logs.</p>
                 </div>
-                <a href="#" class="text-synova-teal font-semibold text-xs hover:underline inline-flex items-center gap-1">View Logs &rarr;</a>
+            </div>
+            <!-- Assignments List Card -->
+            <div class="col-md-3">
+                <div class="card h-100 shadow-sm border-0 bg-white">
+                    <div class="card-body d-flex flex-col justify-between">
+                        <div>
+                            <h5 class="card-title fw-bold text-dark">Assignments</h5>
+                            <p class="card-text text-muted small">Track active and historical employee-house pairings.</p>
+                        </div>
+                        <a href="{% url 'employeeassignment_list' %}" class="btn btn-sm btn-dark mt-3">View Assignments &rarr;</a>
+                    </div>
+                </div>
             </div>
         </div>
-    </main>
+    </div>
 
-    <!-- Footer -->
-    <footer class="bg-white text-gray-500 text-[10px] py-4 border-t border-gray-200 mt-auto">
-        <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-2">
-            <p class="max-w-xl text-center sm:text-left leading-normal">
-                Synova Group Portal provides non-clinical administrative and employment tracking services. All clinical framework boundaries remain the sole responsibility of the licensed provider entity.
-            </p>
-            <p class="whitespace-nowrap">&copy; 2026 Synova Group LLC.</p>
+    <!-- SECTION 3: REPORTING PLACEHOLDER -->
+    <div class="mb-4">
+        <h3 class="h5 fw-bold text-secondary mb-3">System Reports & Logs</h3>
+        <div class="card border-info bg-light shadow-sm">
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <div class="me-3 text-info">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-bar-chart-fill" viewBox="0 0 16 16">
+                            <path d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h5 class="fw-bold mb-1">Operational Analytics & Reports</h5>
+                        <p class="text-muted small mb-0">Reporting dashboards and audit logs are currently being prepared. Check back soon for occupancy breakdowns and staff distribution insights.</p>
+                    </div>
+                </div>
+                <!-- Future reporting links can go here later -->
+                <!-- <div class="mt-3">
+                    <a href="#" class="btn btn-sm btn-outline-info">View Occupancy Report</a>
+                </div> -->
+            </div>
         </div>
-    </footer>
+    </div>
 
+</div>
 {% endblock %}
