@@ -1,41 +1,14 @@
-from django.shortcuts import render
-from employees.models import Employee
-
-def employee_report(request):
-    employees = Employee.objects.all()\
-
-    return render(
-        request,
-        'reports/employees.html',
-        {'employees': employees}
-    )
-
+from django.views.generic import ListView
+from django.db.models import Count
 from houses.models import House
 
-def employees_by_house(request):
+app_name = 'reports'
 
-    houses = House.objects.prefetch_related(
-        'employeeassignment_set'
-    )
+class HouseEmployeeReportView(ListView):
+    model = House
+    template_name = 'reports/house_employee_report.html'
+    context_object_name = 'houses'
 
-    return render(
-        request,
-        'reports/employees_by_house.html',
-        {
-            'houses': houses
-        }
-    )
-
-def manager_report(request):
-
-    managers = Employee.objects.filter(
-        subordinates__isnull=False
-    ).distinct()
-
-    return render(
-        request,
-        'reports/managers.html',
-        {
-            'managers': managers
-        }
-    )
+    def get_queryset(self):
+        # Annotate each house with the count of its assigned employees via employeeassignment
+        return House.objects.annotate(employee_count=Count('employeeassignment'))

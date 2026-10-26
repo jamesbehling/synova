@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Maintenances</h2>
+        <a href="{% url 'maintenance_add' %}" class="btn btn-primary">Add Maintenance</a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>Car</th>
+                    <th>Date</th>
+                    <th>Milage</th>
+		    <th>Break/Fix</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for maintenance in object_list %}
+                <tr>
+                    <td>{{ maintenance.car }}</td>
+                    <td>{{ maintenance.date }}</td>
+		    <td>{{ maintenance.milage }}</td>
+		    <td>{{ maintenance.breakfix }}<td>
+		    <td>{{ maintenance.description }}</td>
+                    <td>
+                        <a href="{% url 'maintenance_detail' maintenance.pk %}" class="btn btn-sm btn-info text-white">View</a>
+                        <a href="{% url 'maintenance_edit' maintenance.pk %}" class="btn btn-sm btn-outline-primary">Edit</a>
+                        <a href="{% url 'maintenance_delete' maintenance.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="7" class="text-center text-muted">No maintenances found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

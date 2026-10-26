@@ -41,6 +41,13 @@
                     <small class="text-muted">Link staff to a house</small>
                 </a>
             </div>
+            <!-- Add Car -->
+            <div class="col-md-3">
+                <a href="{% url 'car_add' %}" class="btn btn-outline-dark w-100 py-3 text-start shadow-sm">
+                    <div class="fw-bold">+ Add Car</div>
+                    <small class="text-muted">Create a car</small>
+                </a>
+            </div>
         </div>
     </div>
 
@@ -96,7 +103,19 @@
                     </div>
                 </div>
             </div>
-        </div>
+            <!-- Cars List Card -->
+            <div class="col-md-3">
+                <div class="card h-100 shadow-sm border-0 bg-white">
+                    <div class="card-body d-flex flex-col justify-between">
+                        <div>
+                            <h5 class="card-title fw-bold text-dark">Cars</h5>
+                            <p class="card-text text-muted small">Track cars, maintenance, and employee-car pairings.</p>
+                        </div>
+                        <a href="{% url 'car_list' %}" class="btn btn-sm btn-dark mt-3">View Cars &rarr;</a>
+                    </div>
+                </div>
+            </div>
+	</div>
     </div>
 
     <!-- SECTION 3: REPORTING PLACEHOLDER -->
@@ -116,9 +135,16 @@
                     </div>
                 </div>
                 <!-- Future reporting links can go here later -->
-                <!-- <div class="mt-3">
-                    <a href="#" class="btn btn-sm btn-outline-info">View Occupancy Report</a>
-                </div> -->
+                <div class="mt-3">
+                    <!--
+                    <li class="nav-item">
+                    <a class="nav-link" href="{% url 'reports:house_employee_report' %}">Reports</a>
+                    </li>
+                    -->
+                    <li class="nav-item">
+                        <a class="btn btn-sm btn-outline-info" href="{% url 'reports:house_employee_report' %}">View Occupancy Report</a>
+                    </li>
+                </div>
             </div>
         </div>
     </div>

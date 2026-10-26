@@ -1,10 +1,8 @@
 from django.urls import path
-from . import views
+from .views import HouseEmployeeReportView
+
+app_name = 'reports'
 
 urlpatterns = [
-    path(
-        'employees/',
-        views.employee_report,
-        name='employee_report'
-    ),
+    path('houses-employees/', HouseEmployeeReportView.as_view(), name='house_employee_report'),
 ]
